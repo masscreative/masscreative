@@ -208,6 +208,115 @@ $.each(starRating, function (index, value) {
 										</div>`);
 });
 
+FWDEVPUtils.onReady(function () {
+  FWDEVPlayer.videoStartBehaviour = "pause";
+
+  new FWDEVPlayer({
+    //main settings
+    instanceName: "player1",
+    parentId: "massCreativeVideoPlayer" + sku,
+    mainFolderPath: "assets",
+    initializeOnlyWhenVisible: "no",
+    skinPath: "modern_skin_dark",
+    displayType: "responsive",
+    autoScale: "yes",
+    fillEntireVideoScreen: "no",
+    openDownloadLinkOnMobile: "no",
+    useHEXColorsForSkin: "no",
+    normalHEXButtonsColor: "#FF0000",
+    selectedHEXButtonsColor: "#FFFFFF",
+    privateVideoPassword: "428c841430ea18a70f7b06525d4b748a",
+    startAtTime: "",
+    stopAtTime: "",
+    startAtVideoSource: 2,
+    videoSource: [{ source: video || findSku.video, label: "hd1080" }],
+    posterPath: futureImage || findSku.imglink,
+    showErrorInfo: "yes",
+    fillEntireScreenWithPoster: "yes",
+    rightClickContextMenu: "developer",
+    disableDoubleClickFullscreen: "no",
+    useChromeless: "no",
+    showPreloader: "yes",
+    addKeyboardSupport: "yes",
+    autoPlay: "no",
+    loop: "no",
+    scrubAtTimeAtFirstPlay: "00:00:00",
+    maxWidth: 1920,
+    maxHeight: 1080,
+    volume: 0.8,
+    greenScreenTolerance: 200,
+    backgroundColor: "#000000",
+    posterBackgroundColor: "#0099FF",
+    //logo settings
+    showLogo: "yes",
+    hideLogoWithController: "yes",
+    logoPosition: "topLeft",
+    logoLink: "https://tokopedia.com/masscreativeid",
+    logoMargins: 15,
+    //controller settings
+    showController: "yes",
+    showControllerWhenVideoIsStopped: "yes",
+    showVolumeScrubber: "yes",
+    showVolumeButton: "yes",
+    showTime: "yes",
+    showQualityButton: "yes",
+    showSubtitleButton: "yes",
+    showShareButton: "yes",
+    showEmbedButton: "yes",
+    showDownloadButton: "yes",
+    showFullScreenButton: "yes",
+    repeatBackground: "yes",
+    controllerHeight: 43,
+    controllerHideDelay: 3,
+    startSpaceBetweenButtons: 8,
+    spaceBetweenButtons: 12,
+    mainScrubberOffestTop: 15,
+    scrubbersOffsetWidth: 4,
+    timeOffsetLeftWidth: 1,
+    timeOffsetRightWidth: -2,
+    volumeScrubberWidth: 90,
+    volumeScrubberOffsetRightWidth: 2,
+    timeColor: "#777777",
+    youtubeQualityButtonNormalColor: "#777777",
+    youtubeQualityButtonSelectedColor: "#FFFFFF",
+    //cuepoints
+    executeCuepointsOnlyOnce: "no",
+    //annotations
+    annotiationsListId: "none",
+    showAnnotationsPositionTool: "no",
+    //subtitles
+    showSubtitleButton: "yes",
+    subtitlesOffLabel: "Subtitle off",
+    startAtSubtitle: 1,
+    subtitlesSource: [
+      { subtitlePath: "content/english_subtitle.txt", subtileLabel: "English" },
+      { subtitlePath: "content/romanian_subtitle.txt", subtileLabel: "Romanian" },
+      { subtitlePath: "content/spanish_subtitle.txt", subtileLabel: "Spanish" },
+    ],
+    //audio visualizer
+    audioVisualizerLinesColor: "#0099FF",
+    audioVisualizerCircleColor: "#FFFFFF",
+    //advertisement on pause window
+    aopwTitle: "Advertisement",
+    aopwSource: "",
+    aopwWidth: 400,
+    aopwHeight: 240,
+    aopwBorderSize: 6,
+    aopwTitleColor: "#FFFFFF",
+    //playback rate / speed
+    showPlaybackRateButton: "yes",
+    defaultPlaybackRate: "1", //0.25, 0.5, 1, 1.25, 1.5, 2
+    //embed window
+    embedWindowCloseButtonMargins: 7,
+    borderColor: "#333333",
+    mainLabelsColor: "#FFFFFF",
+    secondaryLabelsColor: "#a1a1a1",
+    shareAndEmbedTextColor: "#5a5a5a",
+    inputBackgroundColor: "#000000",
+    inputColor: "#FFFFFF",
+  });
+});
+
 let postProductHtml = `
     <div id="" class="product type-product">
       <div class="top-woo-area position-relative" id="rh_woo_layout_inimage">
@@ -316,7 +425,7 @@ let postProductHtml = `
                   <div class="woostorewrap flowhidden mb10 rh-flex-center-align">
                     <div class="brand_logo_small">
                       <a href="/p/${(developer || findSku.developer).replace(/\s+/g, "-").toLowerCase()}.html">
-                        <img class="lazyload" data-skip-lazy="" data-src="${developerLogo || findSku.devlogo}" height="30" alt="${developer || findSku.developer}" src="http://rehub.web/wp-content/themes/rehub-theme/images/default/blank.gif"/></a>
+                        <img class="lazyload" data-skip-lazy="" data-src="${developerLogo || findSku.devlogo}" height="30" alt="${developer || findSku.developer}" src="https://rawcdn.githack.com/masscreative/mcid-theme/c588f069d6ab8c7eb9e9b6d8845c901c56328a5e/assets/blank.gif"/></a>
                     </div>
                     <div class="store_tax">
                       <span class="tag_woo_meta">
@@ -334,6 +443,7 @@ let postProductHtml = `
           <div class="rh-360-content-area tabletsblockdisplay woo_white_text_layout whitecolor">
             <div class="mb20 font120 woo_single_excerpt fontbold">
               <div class="woocommerce-product-details__short-description">
+                <div id="massCreativeVideoPlayer${sku}"></div>
                 ${productShortDescription}
               </div>
             </div>
@@ -601,10 +711,10 @@ let postProductHtml = `
         <div class="flowhidden rh-float-panel darkbg woo_white_text_layout" id="float-panel-woo-area">
             <div class="rh-container rh-flex-center-align pt10 pb10">
             <div class="float-panel-woo-image">
-                <img class="nolazyftheme" src="http://rehub.web/wp-content/uploads/thumbs_dir/Samsung_Q7CN_QLED_1-pshj7578910ei2qo4ep0so1k36qom1ms0fqaduapks.jpg" width="50" height="50" alt="Samsung Q7CN QLED Curved Smart 4K UHD TV 55&#8243;" />
+                <img class="nolazyftheme" src="${futureImage || dataFutureImage}" width="50" height="50" alt="${title || findSku.itemname}" />
             </div>
             <div class="float-panel-woo-info pl20">
-                <div class="float-panel-woo-title rehub-main-font mb5 font110 whitecolor">Samsung Q7CN QLED Curved Smart 4K UHD TV 55&#8243;</div>
+                <div class="float-panel-woo-title rehub-main-font mb5 font110 whitecolor">${title || findSku.itemname}</div>
                 <ul class="float-panel-woo-links list-unstyled list-line-style font80 fontbold lineheight15">
                 <li class="description_tab" id="tab-title-description">
                     <a href="#section-description">Description</a>
@@ -619,12 +729,12 @@ let postProductHtml = `
                 <p class="price">
                     <del aria-hidden="true">
                     <span class="woocommerce-Price-amount amount">
-                        <bdi><span class="woocommerce-Price-currencySymbol">Rp</span>6.789.000</bdi>
+                        <bdi><span class="woocommerce-Price-currencySymbol">Rp </span> ${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") || findSku.harga.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</bdi>
                     </span>
                     </del>
                     <ins>
                     <span class="woocommerce-Price-amount amount">
-                        <bdi><span class="woocommerce-Price-currencySymbol">Rp</span>3.250.000</bdi>
+                        <bdi><span class="woocommerce-Price-currencySymbol">Rp </span> ${priceAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</bdi>
                     </span>
                     </ins>
                 </p>
@@ -669,11 +779,11 @@ let postProductHtml = `
                         </div>
 
                         <figure class="mb15 mt25 position-relative">
-                        <a class="img-centered-flex rh-flex-justify-center rh-flex-center-align" href="http://rehub.web/product/samsung-q7cn-qled-curved-smart-4k-uhd-tv-55/">
+                        <a class="img-centered-flex rh-flex-justify-center rh-flex-center-align" href="${futureImage || dataFutureImage}">
                             <img
-                            src="http://rehub.web/wp-content/themes/rehub-theme/images/default/blank.gif"
-                            data-src="http://rehub.web/wp-content/uploads/2019/03/Samsung_Q7CN_QLED_1-300x300.jpg"
-                            alt="Samsung Q7CN QLED Curved Smart 4K UHD TV 55&#8243;"
+                            src="ttps://rawcdn.githack.com/masscreative/mcid-theme/c588f069d6ab8c7eb9e9b6d8845c901c56328a5e/blank.gif"
+                            data-src="${futureImage || dataFutureImage}"
+                            alt="${title || findSku.itemname}"
                             data-skip-lazy=""
                             class="lazyload"
                             width="300"
@@ -684,18 +794,18 @@ let postProductHtml = `
                         <div class="gridcountdown"></div>
                         </figure>
                         <div class="cat_for_grid lineheight15">
-                        <a href="http://rehub.web/product-category/audio-television/tv-sets/" class="woocat">TV sets</a>
+                        <a href="${futureImage || dataFutureImage}" class="woocat">TV sets</a>
                         </div>
 
                         <h3 class="text-clamp text-clamp-2">
-                        <a href="http://rehub.web/product/samsung-q7cn-qled-curved-smart-4k-uhd-tv-55/">Samsung Q7CN QLED Curved Smart 4K UHD TV 55&#8243;</a>
+                        <a href="${findSku.postlink}">${title || findSku.itemname}</a>
                         </h3>
 
                         <div class="border-top pt10 pr10 pl10 pb10 rh-flex-center-align abposbot">
                         <div class="price_for_grid redbrightcolor floatleft rehub-btn-font mr10">
                             <span class="price">
                             <span class="woocommerce-Price-amount amount">
-                                <bdi> <span class="woocommerce-Price-currencySymbol">Rp</span>1.500 </bdi>
+                                <bdi> <span class="woocommerce-Price-currencySymbol">Rp </span> ${priceAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} </bdi>
                             </span>
                             </span>
                         </div>
